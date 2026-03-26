@@ -2,15 +2,16 @@ import streamlit as st
 from openai import OpenAI
 from PyPDF2 import PdfReader
 
-# Impor LangChain standar terbaru
+# Impor standar modern
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import CharacterTextSplitter
 
-# ALAMAT PAKSA: Gunakan ini agar kompatibel dengan Python 3.14 di server
+# PAKAI CARA INI: RetrievalQA sudah dipindah ke folder 'retrieval_qa'
+# Jika masih error, kita akan pakai fungsi 'create_retrieval_chain'
 try:
     from langchain.chains.retrieval_qa.base import RetrievalQA
-except ImportError:
+except:
     from langchain.chains import RetrievalQA
 
 # --- 1. KONFIGURASI HALAMAN ---
