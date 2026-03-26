@@ -2,17 +2,15 @@ import streamlit as st
 from openai import OpenAI
 from PyPDF2 import PdfReader
 
-# Impor standar modern
+# Impor LangChain standar modern 2026
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import CharacterTextSplitter
 
-# PAKAI CARA INI: RetrievalQA sudah dipindah ke folder 'retrieval_qa'
-# Jika masih error, kita akan pakai fungsi 'create_retrieval_chain'
-try:
-    from langchain.chains.retrieval_qa.base import RetrievalQA
-except:
-    from langchain.chains import RetrievalQA
+# Import terbaru untuk menggantikan RetrievalQA
+from langchain.chains import create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_core.prompts import ChatPromptTemplate
 
 # --- 1. KONFIGURASI HALAMAN ---
 st.set_page_config(page_title="My AI Assistant", page_icon="🤖", layout="wide")
