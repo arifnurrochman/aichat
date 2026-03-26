@@ -2,13 +2,13 @@ import streamlit as st
 from openai import OpenAI
 from PyPDF2 import PdfReader
 
-# Import LangChain versi terbaru yang lebih stabil untuk hosting
+# Import LangChain versi terbaru yang lebih stabil
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import CharacterTextSplitter
 
-# Alamat import RetrievalQA yang paling kompatibel di server
-from langchain.chains.retrieval_qa.base import RetrievalQA
+# Cara panggil RetrievalQA yang paling aman untuk semua versi
+from langchain.chains import RetrievalQA
 
 # --- 1. KONFIGURASI HALAMAN ---
 st.set_page_config(page_title="My AI Assistant", page_icon="🤖", layout="wide")
