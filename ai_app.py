@@ -2,13 +2,16 @@ import streamlit as st
 from openai import OpenAI
 from PyPDF2 import PdfReader
 
-# Impor LangChain versi terbaru yang mendukung Python 3.14
+# Impor LangChain standar terbaru
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import CharacterTextSplitter
 
-# CARA TERBARU: Jangan gunakan .retrieval_qa.base
-from langchain.chains import RetrievalQA
+# ALAMAT PAKSA: Gunakan ini agar kompatibel dengan Python 3.14 di server
+try:
+    from langchain.chains.retrieval_qa.base import RetrievalQA
+except ImportError:
+    from langchain.chains import RetrievalQA
 
 # --- 1. KONFIGURASI HALAMAN ---
 st.set_page_config(page_title="My AI Assistant", page_icon="🤖", layout="wide")
